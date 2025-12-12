@@ -1,4 +1,5 @@
 from anki.cards_pb2 import Card
+from anki.notes import Note
 
 from aqt.utils import showInfo, tooltip
 from aqt.operations import QueryOp
@@ -12,6 +13,8 @@ from .prompt import *
 def generateNewCardContents(originalContent: str) -> str:
     # (My Background Operation)
     return prompt_gemini(prompt + originalContent)
+
+
 def onSuccess(card_id: int, new_contents):
     # (On Success Operation)
     col = mw.col
@@ -28,13 +31,13 @@ def onSuccess(card_id: int, new_contents):
         QTimer.singleShot(0, lambda: tooltip(f"Card {card_id} was not changed due to an error."))
     # TODO Refresh UI Screen
 
-def handleGivenCard(_, card: Card, ease) -> None:
+
+def handleGivenCardReview(_, card: Card, ease) -> None:
     # (My UI Action)
-    if mw.state != "review":
-        return
     note = card.note()
+    if note.note_type()["name"] != "MATH":
+        return
     originalQuestion = note["MATH Question"]
-    # showInfo(originalQuestion)
     cid = card.id
 
     op = QueryOp(
@@ -47,9 +50,33 @@ def handleGivenCard(_, card: Card, ease) -> None:
         # and it is given the return value of the op
         success=lambda new_contents: onSuccess(cid, new_contents)
     )
-    if card.note_type()["name"] == "MATH":
-        QTimer.singleShot(0, lambda: tooltip(f"Formulating New Question for card {cid}..."))
-        op.run_in_background()
+
+    QTimer.singleShot(0, lambda: tooltip(f"Formulating New Question for card {cid}..."))
+    # op.run_in_background()
+    op.without_collection().run_in_background()
 
 
-gui_hooks.reviewer_did_answer_card.append(handleGivenCard)
+def handleGivenCardAddition(note: Note):
+    card = note.cards()[0]
+    if card.note_type()["name"] != "MATH":
+        return
+    originalQuestion = note["MATH Question"]
+    cid = card.id
+    op = QueryOp(
+        # the active window (main window in this case)
+        parent=mw,
+        # the operation is passed the collection for convenience; you can
+        # ignore it if you wish
+        op=lambda col: generateNewCardContents(originalQuestion),
+        # this function will be called if op completes successfully,
+        # and it is given the return value of the op
+        success=lambda new_contents: onSuccess(cid, new_contents)
+    )
+    QTimer.singleShot(0, lambda: tooltip(f"Formulating New Question for recently added card {cid}..."))
+    op.without_collection().run_in_background()
+
+
+gui_hooks.reviewer_did_answer_card.append(handleGivenCardReview)
+gui_hooks.add_cards_did_add_note.append(handleGivenCardAddition)
+# TODO remix added cards, add setting for this in config
+# Fix card/note id conflict
