@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4cac0b51-1028-4a0e-93ce-157666239019" name="Changes" comment="Start">
-      <change afterPath="$PROJECT_DIR$/config.md" afterDir="false" />
+    <list default="true" id="4cac0b51-1028-4a0e-93ce-157666239019" name="Changes" comment="Config changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.md" beforeDir="false" afterPath="$PROJECT_DIR$/config.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta.json" beforeDir="false" afterPath="$PROJECT_DIR$/meta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/promptModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/promptModel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,12 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1765238188552</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Config changes">
+      <option name="closed" value="true" />
+      <created>1765528919003</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765528919003</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start" />
+    <MESSAGE value="Config changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Config changes" />
   </component>
 </project>

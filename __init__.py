@@ -9,8 +9,6 @@ from aqt.qt import *
 from .promptModel import *
 from .prompt import *
 
-config = mw.addonManager.getConfig("config.json")
-
 def generateNewCardContents(originalContent: str) -> str:
     # (My Background Operation)
     return prompt_gemini(prompt + originalContent)
@@ -26,6 +24,7 @@ def onSuccess(card_id: int, new_contents):
         mw.col.update_note(note)
         note["MATH Answer"] = new_contents.split("answer>")[1][1:-2]
         mw.col.update_note(note)
+
         QTimer.singleShot(0, lambda: tooltip(f"Card {card_id} was changed to... {new_contents}."))
     else:
         showInfo(new_contents)
@@ -36,7 +35,8 @@ def onSuccess(card_id: int, new_contents):
 def handleGivenCardReview(_, card: Card, ease) -> None:
     # (My UI Action)
     note = card.note()
-    if note.note_type()["name"] != "MATH":
+    config = mw.addonManager.getConfig(__name__)
+    if note.note_type()["name"] != "MATH" or not config["remix_reviewed_cards"]:
         return
     originalQuestion = note["MATH Question"]
     cid = card.id
@@ -59,7 +59,8 @@ def handleGivenCardReview(_, card: Card, ease) -> None:
 
 def handleGivenCardAddition(note: Note):
     card = note.cards()[0]
-    if card.note_type()["name"] != "MATH":
+    config = mw.addonManager.getConfig(__name__)
+    if card.note_type()["name"] != "MATH" or not config["remix_newly_added_cards"]:
         return
     originalQuestion = note["MATH Question"]
     cid = card.id

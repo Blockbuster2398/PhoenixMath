@@ -1,4 +1,6 @@
 {
   "api_key": 5,
+  "model": "gemini-2.5-flash",
+  "remix_reviewed_cards": true,
   "remix_newly_added_cards": true
 }
