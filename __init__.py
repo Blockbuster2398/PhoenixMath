@@ -1,7 +1,7 @@
 from anki.cards_pb2 import Card
 from anki.notes import Note
 
-from aqt.utils import showInfo, tooltip
+from aqt.utils import tooltip
 from aqt.operations import QueryOp
 from aqt import gui_hooks, mw
 from aqt.qt import *
@@ -9,6 +9,7 @@ from aqt.qt import *
 from .promptModel import *
 from .prompt import *
 
+config = mw.addonManager.getConfig("config.json")
 
 def generateNewCardContents(originalContent: str) -> str:
     # (My Background Operation)
@@ -79,4 +80,4 @@ def handleGivenCardAddition(note: Note):
 gui_hooks.reviewer_did_answer_card.append(handleGivenCardReview)
 gui_hooks.add_cards_did_add_note.append(handleGivenCardAddition)
 # TODO remix added cards, add setting for this in config
-# Fix card/note id conflict
+
