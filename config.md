@@ -1,4 +1,4 @@
-**api_key:** To use this add-on, you must first set up a Google Gemini API key and configure it here. More infomation can be found [here](https://docs.cloud.google.com/api-keys/docs/get-started-api-keys). 
+**Api_key:** To use this add-on, you must first set up a Google Gemini API key and configure it here. More information can be found [here](https://docs.cloud.google.com/api-keys/docs/get-started-api-keys). 
 
 **model:** Although the gemini-2.5-flash model is set as the default, any of Google's other text models may be used. If your use-case receives incorrect questions/answers too frequently, consider using a more powerful or recent model. (ex. "gemini-2.5-pro" or "gemini-2.5-pro").
 
