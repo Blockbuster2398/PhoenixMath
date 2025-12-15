@@ -7,8 +7,7 @@ from aqt.utils import showInfo
 
 def prompt_gemini(text):
     api_key = os.environ.get("phoenixkey5")
-    # model_id = "gemini-2.5-flash-lite"
-    # Enabled for testing/development only, instead use key structure below
+    # Above enabled for testing/development only, instead use key structure below
     config = mw.addonManager.getConfig(__name__)
     # api_key = config["api_key"]
     model_id = config["model"]

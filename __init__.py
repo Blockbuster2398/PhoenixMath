@@ -20,9 +20,9 @@ def onSuccess(card_id: int, new_contents):
     card = col.get_card(card_id)
     note = card.note()
     if not ("HTTP Error" in new_contents):
-        note["MATH Question"] = new_contents.split("question>")[1][1:-2]
+        note["MATH QUESTION"] = new_contents.split("question>")[1][1:-2]
         mw.col.update_note(note)
-        note["MATH Answer"] = new_contents.split("answer>")[1][1:-2]
+        note["MATH ANSWER"] = new_contents.split("answer>")[1][1:-2]
         mw.col.update_note(note)
 
         QTimer.singleShot(0, lambda: tooltip(f"Card {card_id} was changed to... {new_contents}."))
@@ -38,7 +38,7 @@ def handleGivenCardReview(_, card: Card, ease) -> None:
     config = mw.addonManager.getConfig(__name__)
     if note.note_type()["name"] != "MATH" or not config["remix_reviewed_cards"]:
         return
-    originalQuestion = note["MATH Question"]
+    originalQuestion = note["MATH QUESTION"]
     cid = card.id
 
     op = QueryOp(
@@ -62,7 +62,7 @@ def handleGivenCardAddition(note: Note):
     config = mw.addonManager.getConfig(__name__)
     if card.note_type()["name"] != "MATH" or not config["remix_newly_added_cards"]:
         return
-    originalQuestion = note["MATH Question"]
+    originalQuestion = note["MATH QUESTION"]
     cid = card.id
     op = QueryOp(
         # the active window (main window in this case)

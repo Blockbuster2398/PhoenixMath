@@ -1,1 +1,1 @@
-{"disabled": false, "mod": 0, "conflicts": [], "max_point_version": 0, "min_point_version": 0, "branch_index": 0, "update_enabled": true}
+{"disabled": false, "mod": 0, "conflicts": [], "max_point_version": 0, "min_point_version": 0, "branch_index": 0, "update_enabled": true, "config": {"api_key": 5, "model": "gemini-2.5-pro", "remix_newly_added_cards": true, "remix_reviewed_cards": true}}
