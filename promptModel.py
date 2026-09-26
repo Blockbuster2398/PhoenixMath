@@ -6,10 +6,10 @@ from aqt import mw
 from aqt.utils import showInfo
 
 def prompt_gemini(text):
-    api_key = os.environ.get("phoenixkey5")
+    # api_key = os.environ.get("phoenixkey5")
     # Above enabled for testing/development only, instead use key structure below
     config = mw.addonManager.getConfig(__name__)
-    # api_key = config["api_key"]
+    api_key = config["api_key"]
     model_id = config["model"]
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent?key={api_key}"
 

@@ -1,5 +1,7 @@
 # Phoenix Math – Automatic Card Remixing for Anki
 
+## What This Add-on Does
+
 Given a card with a math problem, Phoenix Math uses an LLM to generate a new version of that problem (along with its answer), allowing the user to memorize concepts and processes rather than the answers to individual problems.
 
 ## Supported Note Type
